@@ -1,0 +1,258 @@
+<mxfile host="Electron">
+  <diagram id="3tMoBI7EHkgE5NvpPA-j" name="Page-2">
+    <mxGraphModel dx="1417" dy="940" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" mermaidData="{&#xa;  &quot;data&quot;: &quot;\nclassDiagram\n    direction LR\n\n    class WeatherController {\n        &lt;&lt;FastAPI Router&gt;&gt;\n        +search_weather(city: str) WeatherReport\n    }\n\n    class WeatherService {\n        -api_client: WeatherAPIClient\n        +get_weather_report(city: str) WeatherReport\n    }\n\n    class WeatherAPIClient {\n        -base_url: str\n        -geocoding_url: str\n        +search_location(city: str) dict\n        +get_weather_data(latitude: float, longitude: float) dict\n    }\n\n    class Location {\n        +name: str\n        +country: str\n        +latitude: float\n        +longitude: float\n        +get_info() str\n    }\n\n    class CurrentWeather {\n        +temperature: float\n        +precipitation: float\n        +weather_code: int\n        +condition: str\n        +get_info() str\n    }\n\n    class DailyWeather {\n        +date: str\n        +temp_max: float\n        +temp_min: float\n        +precipitation: float\n        +weather_code: int\n        +condition: str\n        +get_info() str\n    }\n\n    class WeatherReport {\n        +location: Location\n        +current_weather: CurrentWeather\n        +daily_history: list\n    }\n\n    WeatherController ..&gt; WeatherService : menggunakan\n    WeatherService ..&gt; WeatherAPIClient : menggunakan\n    WeatherService ..&gt; Location : membuat\n    WeatherService ..&gt; CurrentWeather : membuat\n    WeatherService ..&gt; DailyWeather : membuat\n    WeatherService ..&gt; WeatherReport : menghasilkan\n\n    WeatherReport \&quot;1\&quot; *-- \&quot;1\&quot; Location : memiliki\n    WeatherReport \&quot;1\&quot; *-- \&quot;1\&quot; CurrentWeather : memiliki\n    WeatherReport \&quot;1\&quot; *-- \&quot;7\&quot; DailyWeather : memiliki\n&quot;,&#xa;  &quot;config&quot;: null&#xa;}" id="IZHd5efvcEx-5i891wHL-1">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;b&gt;WeatherController&lt;/b&gt;" mermaidId="n:WeatherController" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=72;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;spacingTop=24;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;WeatherController&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-2">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=72;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;spacingTop=24;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="144" width="394" x="306" y="411" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-3" parent="IZHd5efvcEx-5i891wHL-2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="«FastAPI Router»" vertex="1">
+          <mxGeometry height="24" width="394" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-4" parent="IZHd5efvcEx-5i891wHL-2" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="394" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-5" parent="IZHd5efvcEx-5i891wHL-2" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+search_weather(city: str) WeatherReport" vertex="1">
+          <mxGeometry height="24" width="394" y="108" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;WeatherService&lt;/b&gt;" mermaidId="n:WeatherService" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;WeatherService&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-6">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="144" width="413" x="848" y="411" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-7" parent="IZHd5efvcEx-5i891wHL-6" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="-api_client: WeatherAPIClient" vertex="1">
+          <mxGeometry height="24" width="413" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-8" parent="IZHd5efvcEx-5i891wHL-6" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="413" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-9" parent="IZHd5efvcEx-5i891wHL-6" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+get_weather_report(city: str) WeatherReport" vertex="1">
+          <mxGeometry height="24" width="413" y="108" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;WeatherAPIClient&lt;/b&gt;" mermaidId="n:WeatherAPIClient" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;WeatherAPIClient&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-10">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="192" width="495" x="1409" y="79" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-11" parent="IZHd5efvcEx-5i891wHL-10" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="-base_url: str" vertex="1">
+          <mxGeometry height="24" width="495" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-12" parent="IZHd5efvcEx-5i891wHL-10" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="-geocoding_url: str" vertex="1">
+          <mxGeometry height="24" width="495" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-13" parent="IZHd5efvcEx-5i891wHL-10" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="495" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-14" parent="IZHd5efvcEx-5i891wHL-10" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+search_location(city: str) dict" vertex="1">
+          <mxGeometry height="24" width="495" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-15" parent="IZHd5efvcEx-5i891wHL-10" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+get_weather_data(latitude: float, longitude: float) dict" vertex="1">
+          <mxGeometry height="24" width="495" y="156" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;Location&lt;/b&gt;" mermaidId="n:Location" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;Location&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-16">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="216" width="175" x="2042" y="226" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-17" parent="IZHd5efvcEx-5i891wHL-16" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+name: str" vertex="1">
+          <mxGeometry height="24" width="175" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-18" parent="IZHd5efvcEx-5i891wHL-16" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+country: str" vertex="1">
+          <mxGeometry height="24" width="175" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-19" parent="IZHd5efvcEx-5i891wHL-16" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+latitude: float" vertex="1">
+          <mxGeometry height="24" width="175" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-20" parent="IZHd5efvcEx-5i891wHL-16" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+longitude: float" vertex="1">
+          <mxGeometry height="24" width="175" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-21" parent="IZHd5efvcEx-5i891wHL-16" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="175" y="156" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-22" parent="IZHd5efvcEx-5i891wHL-16" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+get_info() str" vertex="1">
+          <mxGeometry height="24" width="175" y="180" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;CurrentWeather&lt;/b&gt;" mermaidId="n:CurrentWeather" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;CurrentWeather&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-23">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="216" width="228" x="2016" y="492" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-24" parent="IZHd5efvcEx-5i891wHL-23" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+temperature: float" vertex="1">
+          <mxGeometry height="24" width="228" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-25" parent="IZHd5efvcEx-5i891wHL-23" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+precipitation: float" vertex="1">
+          <mxGeometry height="24" width="228" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-26" parent="IZHd5efvcEx-5i891wHL-23" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+weather_code: int" vertex="1">
+          <mxGeometry height="24" width="228" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-27" parent="IZHd5efvcEx-5i891wHL-23" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+condition: str" vertex="1">
+          <mxGeometry height="24" width="228" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-28" parent="IZHd5efvcEx-5i891wHL-23" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="228" y="156" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-29" parent="IZHd5efvcEx-5i891wHL-23" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+get_info() str" vertex="1">
+          <mxGeometry height="24" width="228" y="180" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;DailyWeather&lt;/b&gt;" mermaidId="n:DailyWeather" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;DailyWeather&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-30">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="264" width="218" x="2021" y="758" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-31" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+date: str" vertex="1">
+          <mxGeometry height="24" width="218" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-32" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+temp_max: float" vertex="1">
+          <mxGeometry height="24" width="218" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-33" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+temp_min: float" vertex="1">
+          <mxGeometry height="24" width="218" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-34" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+precipitation: float" vertex="1">
+          <mxGeometry height="24" width="218" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-35" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+weather_code: int" vertex="1">
+          <mxGeometry height="24" width="218" y="156" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-36" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+condition: str" vertex="1">
+          <mxGeometry height="24" width="218" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-37" parent="IZHd5efvcEx-5i891wHL-30" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="218" y="204" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-38" parent="IZHd5efvcEx-5i891wHL-30" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+get_info() str" vertex="1">
+          <mxGeometry height="24" width="218" y="228" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;WeatherReport&lt;/b&gt;" mermaidId="n:WeatherReport" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;WeatherReport&lt;/b&gt;" id="IZHd5efvcEx-5i891wHL-39">
+          <mxCell parent="IZHd5efvcEx-5i891wHL-1" style="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=#B1DDF0;strokeColor=#BAC8D3;fontColor=#182E3E;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" vertex="1">
+            <mxGeometry height="168" width="332" x="1490" y="596" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-40" parent="IZHd5efvcEx-5i891wHL-39" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+location: Location" vertex="1">
+          <mxGeometry height="24" width="332" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-41" parent="IZHd5efvcEx-5i891wHL-39" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+current_weather: CurrentWeather" vertex="1">
+          <mxGeometry height="24" width="332" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-42" parent="IZHd5efvcEx-5i891wHL-39" style="text;fontSize=16;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Architects Daughter;fontColor=#182E3E;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;" value="+daily_history: list" vertex="1">
+          <mxGeometry height="24" width="332" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-43" parent="IZHd5efvcEx-5i891wHL-39" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=#BAC8D3;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;labelBackgroundColor=none;fontColor=#182E3E;" vertex="1">
+          <mxGeometry height="24" width="332" y="132" as="geometry" />
+        </mxCell>
+        <UserObject label="menggunakan" mermaidId="e:WeatherController-&gt;WeatherService#0" mermaidBaseStyle="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.5;entryX=0;entryY=0.5;" mermaidBaseValue="menggunakan" id="IZHd5efvcEx-5i891wHL-44">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-2" style="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fixDash=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-6">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="menggunakan" mermaidId="e:WeatherService-&gt;WeatherAPIClient#0" mermaidBaseStyle="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.66;exitY=0;entryX=0;entryY=0.5;" mermaidBaseValue="menggunakan" id="IZHd5efvcEx-5i891wHL-45">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-6" style="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=0.66;exitY=0;entryX=0;entryY=0.5;fixDash=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-10">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1335" y="175" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="membuat" mermaidId="e:WeatherService-&gt;Location#0" mermaidBaseStyle="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.79;exitY=0;entryX=0;entryY=0.46;" mermaidBaseValue="membuat" id="IZHd5efvcEx-5i891wHL-46">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-6" style="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=0.79;exitY=0;entryX=0;entryY=0.46;fixDash=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-16">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1335" y="318" />
+                <mxPoint x="1656" y="318" />
+                <mxPoint x="1960" y="318" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="membuat" mermaidId="e:WeatherService-&gt;CurrentWeather#0" mermaidBaseStyle="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.5;entryX=0;entryY=0.14;" mermaidBaseValue="membuat" id="IZHd5efvcEx-5i891wHL-47">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-6" style="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=1;exitY=0.5;entryX=0;entryY=0.14;fixDash=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-23">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1335" y="483" />
+                <mxPoint x="1656" y="483" />
+                <mxPoint x="1960" y="483" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="membuat" mermaidId="e:WeatherService-&gt;DailyWeather#0" mermaidBaseStyle="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.65;exitY=1;entryX=0;entryY=0.31;" mermaidBaseValue="membuat" id="IZHd5efvcEx-5i891wHL-48">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-6" style="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=0.65;exitY=1;entryX=0;entryY=0.31;fixDash=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-30">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1335" y="811" />
+                <mxPoint x="1656" y="811" />
+                <mxPoint x="1960" y="811" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="menghasilkan" mermaidId="e:WeatherService-&gt;WeatherReport#0" mermaidBaseStyle="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.75;exitY=1;entryX=0;entryY=0.5;" mermaidBaseValue="menghasilkan" id="IZHd5efvcEx-5i891wHL-49">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-6" style="curved=1;dashed=1;startArrow=none;endArrow=classic;endSize=9;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=0.75;exitY=1;entryX=0;entryY=0.5;fixDash=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-39">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1335" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="memiliki" mermaidId="e:WeatherReport-&gt;Location#0" mermaidBaseStyle="curved=1;startArrow=mermaidDiamond;startSize=17;startFill=1;endArrow=none;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.84;exitY=0;entryX=0;entryY=0.78;" mermaidBaseValue="memiliki" id="IZHd5efvcEx-5i891wHL-50">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-39" style="curved=1;startArrow=mermaidDiamond;startSize=17;startFill=1;endArrow=none;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=0.84;exitY=0;entryX=0;entryY=0.78;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-16">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1960" y="451" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-51" parent="IZHd5efvcEx-5i891wHL-50" style="edgeLabel;resizable=0;labelBackgroundColor=none;fontSize=11;spacing=8;align=left;verticalAlign=bottom;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontColor=#182E3E;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-52" parent="IZHd5efvcEx-5i891wHL-50" style="edgeLabel;resizable=0;labelBackgroundColor=none;fontSize=11;spacing=8;align=right;verticalAlign=top;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontColor=#182E3E;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+        <UserObject label="memiliki" mermaidId="e:WeatherReport-&gt;CurrentWeather#0" mermaidBaseStyle="curved=1;startArrow=mermaidDiamond;startSize=17;startFill=1;endArrow=none;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=1;exitY=0.5;entryX=0;entryY=0.75;" mermaidBaseValue="memiliki" id="IZHd5efvcEx-5i891wHL-53">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-39" style="curved=1;startArrow=mermaidDiamond;startSize=17;startFill=1;endArrow=none;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=1;exitY=0.5;entryX=0;entryY=0.75;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-23">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1960" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-54" parent="IZHd5efvcEx-5i891wHL-53" style="edgeLabel;resizable=0;labelBackgroundColor=none;fontSize=11;spacing=8;align=left;verticalAlign=bottom;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontColor=#182E3E;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-55" parent="IZHd5efvcEx-5i891wHL-53" style="edgeLabel;resizable=0;labelBackgroundColor=none;fontSize=11;spacing=8;align=right;verticalAlign=top;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontColor=#182E3E;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+        <UserObject label="memiliki" mermaidId="e:WeatherReport-&gt;DailyWeather#0" mermaidBaseStyle="curved=1;startArrow=mermaidDiamond;startSize=17;startFill=1;endArrow=none;strokeColor=light-dark(#333333,#cccccc);html=1;fontSize=16;labelBackgroundColor=light-dark(#ECECFF,#1f2020);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=light-dark(#333333,#cccccc);exitX=0.84;exitY=1;entryX=0;entryY=0.54;" mermaidBaseValue="memiliki" id="IZHd5efvcEx-5i891wHL-56">
+          <mxCell edge="1" parent="IZHd5efvcEx-5i891wHL-1" source="IZHd5efvcEx-5i891wHL-39" style="curved=1;startArrow=mermaidDiamond;startSize=17;startFill=1;endArrow=none;strokeColor=#EEEEEE;html=1;fontSize=16;labelBackgroundColor=none;fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontColor=default;exitX=0.84;exitY=1;entryX=0;entryY=0.54;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;shadow=0;orthogonal=0;flowAnimation=0;followTerminals=0;" target="IZHd5efvcEx-5i891wHL-30">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1960" y="906" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="IZHd5efvcEx-5i891wHL-57" parent="IZHd5efvcEx-5i891wHL-56" style="edgeLabel;resizable=0;labelBackgroundColor=none;fontSize=11;spacing=8;align=left;verticalAlign=bottom;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontColor=#182E3E;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry" />
+        </mxCell>
+        <mxCell id="IZHd5efvcEx-5i891wHL-58" parent="IZHd5efvcEx-5i891wHL-56" style="edgeLabel;resizable=0;labelBackgroundColor=none;fontSize=11;spacing=8;align=right;verticalAlign=top;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontColor=#182E3E;" value="7" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
